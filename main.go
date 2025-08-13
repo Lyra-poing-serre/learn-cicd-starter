@@ -17,12 +17,17 @@ import (
 	_ "github.com/tursodatabase/libsql-client-go/libsql"
 )
 
-type apiConfig struct{
-	DB *database.Queries}
+type apiConfig struct {
+	DB *database.Queries
+}
 
 //go:embed static/*
 var staticFiles embed.FS
 
+func unused() {
+	// this function does nothing
+	// and is called nowhere
+}
 func main() {
 	err := godotenv.Load(".env")
 	if err != nil {
