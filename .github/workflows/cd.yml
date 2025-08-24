@@ -22,7 +22,7 @@ jobs:
         run: ./scripts/buildprod.sh
 
       - name: Set up Cloud SDK
-        run: "google-github-actions/setup-gcloud@v2"
+        uses: "google-github-actions/setup-gcloud@v2"
 
       - name: Build and submit
         run: gcloud builds submit --tag REGION-docker.pkg.dev/PROJECT_ID/REPOSITORY/IMAGE:TAG .
