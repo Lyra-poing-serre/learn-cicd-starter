@@ -5,12 +5,12 @@ on:
     branches: [main]
 
 jobs:
-  deploy:
+  cd:
     name: cd
     runs-on: ubuntu-lastest
 
     steps:
-      - name: Checkout code
+      - name: Chewckout code
         uses: actions/checkout@v5
 
       - name: Set up Go toolchain
