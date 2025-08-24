@@ -10,19 +10,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
       - id: "auth"
         uses: "google-github-actions/auth@v2"
         with:
           credentials_json: "${{ secrets.GCP_CREDENTIALS }}"
 
-      - name: Checkout code
-        uses: actions/checkout@v5
+      - name: Set up Cloud SDK
+        uses: "google-github-actions/setup-gcloud@v2"
 
       - name: buildprod
         run: ./scripts/buildprod.sh
-
-      - name: Set up Cloud SDK
-        uses: "google-github-actions/setup-gcloud@v2"
 
       - name: Build and submit
         run: gcloud builds submit --tag REGION-docker.pkg.dev/PROJECT_ID/REPOSITORY/IMAGE:TAG .
