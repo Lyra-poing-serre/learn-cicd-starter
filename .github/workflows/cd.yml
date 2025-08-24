@@ -7,16 +7,11 @@ on:
 jobs:
   cd:
     name: cd
-    runs-on: ubuntu-lastest
+    runs-on: ubuntu-latest
 
-    steps:
-      - name: Chewckout code
+    steps:  
+      - name: Checkout code
         uses: actions/checkout@v5
-
-      - name: Set up Go toolchain
-        uses: actions/setup-go@v5
-        with:
-          go-version: "1.23.0"
-
+      
       - name: Build the app
-        run: docker build -t lyrania/notely:latest .
+        run: ./scripts/buildprod.sh
